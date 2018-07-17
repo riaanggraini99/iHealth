@@ -1,3 +1,5 @@
+const empty = require('rxjs');
+
 /**
  * WEBPACK DLL GENERATOR
  *
@@ -42,5 +44,23 @@ module.exports = require('./webpack.base.babel')({
   ],
   performance: {
     hints: false,
+  },
+
+  // entry: ['./test/files/sample.js'],
+  module: {
+    rules: [
+      {
+        test: /\.js$/,
+        exclude: /node_modules/,
+        use: {
+          loader: 'babel-loader',
+        },
+      },
+    ],
+  },
+  node: {
+    fs: empty,
+    net: empty,
+    tls: empty,
   },
 });

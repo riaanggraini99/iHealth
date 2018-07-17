@@ -12,6 +12,14 @@ const ngrok =
     ? require('ngrok')
     : false;
 const { resolve } = require('path');
+const config = require('../internals/config/configdb');
+const mongoose = require('mongoose').set('debug', true);
+// const mongoose = require('mongoose')
+
+// Set up Mongoose
+mongoose.connect(isDev ? config.db_dev : config.db);
+mongoose.Promise = global.Promise;
+
 const app = express();
 
 // If you need a backend, e.g. an API, add your custom backend-specific middleware here
