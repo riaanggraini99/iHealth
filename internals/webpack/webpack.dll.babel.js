@@ -1,4 +1,4 @@
-const empty = require('rxjs');
+// const empty = require('rxjs');
 
 /**
  * WEBPACK DLL GENERATOR
@@ -59,8 +59,14 @@ module.exports = require('./webpack.base.babel')({
     ],
   },
   node: {
-    fs: empty,
-    net: empty,
-    tls: empty,
+    // Replace these Node.js native modules with empty objects, Mongoose's
+    // browser library does not use them.
+    // See https://webpack.js.org/configuration/node/
+    dns: 'empty',
+    fs: 'empty',
+    module: 'empty',
+    net: 'empty',
+    tls: 'empty',
   },
+  target: 'web',
 });

@@ -30,6 +30,8 @@ const ReactBoilerplate = {
         'sanitize.css',
         'mongodb',
         'mongoose',
+
+        'fs',
       ],
 
       /**
