@@ -12,10 +12,17 @@ const ngrok =
     ? require('ngrok')
     : false;
 const { resolve } = require('path');
-// const mongoose = require('mongoose');
-// const db = mongoose.connection;
-// const isDev = process.env.NODE_ENV !== 'production';
-// const config = require('../internals/config/configdb');
+const mongoose = require('mongoose').set('debug', true);
+// const promiseLibrary = require('bluebird');
+
+mongoose.Promise = require('bluebird');
+mongoose
+  .connect(
+    'mongodb://localhost/itHealth',
+    { useMongoClient: true },
+  )
+  .then(() => console.log('connection succesful'))
+  .catch(err => console.error(err));
 
 // declare variables routes
 const patient = require('./routes/patient');

@@ -30,8 +30,16 @@ const ReactBoilerplate = {
         'sanitize.css',
         'mongodb',
         'mongoose',
-
+        'crypto',
+        'jsonwebtoken',
+        'express-jwt',
         'fs',
+        'cookie-parser',
+        'session',
+        'cookie-session',
+        'connect',
+        'formidable',
+        'lodash',
       ],
 
       /**
