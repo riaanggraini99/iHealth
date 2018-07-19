@@ -1,21 +1,28 @@
 const mongoose = require('mongoose');
 const crypto = require('crypto');
-const PatientSchema = new mongoose.Schema({
+mongoose.createConnection('mongodb://localhost/itHealth');
+// var db 	=	 mongoose.connection;
+ var Schema = mongoose.Schema
+
+mongoose.models = {};
+mongoose.modelSchemas = {};
+
+
+const PatientSchema = new Schema({
   name: {
     type: String,
-    trim: true,
-    required: 'Name is required',
+    index :true,
+    //required: 'Name is required',
   },
   email: {
     type: String,
-    trim: true,
-    unique: 'Email already exists',
-    match: [/.+\@.+\..+/, 'Please fill a valid email address'],
-    required: 'Email is required',
+    // unique: 'Email already exists',
+    // match: [/.+\@.+\..+/, 'Please fill a valid email address'],
+    // required: 'Email is required',
   },
   hashed_password: {
     type: String,
-    required: 'Password is required',
+    // required: 'Password is required',
   },
   salt: String,
   updated: Date,
@@ -25,30 +32,25 @@ const PatientSchema = new mongoose.Schema({
   },
   ID: {
     type: String,
-    trim: true,
   },
   address: {
     type: String,
-    trim: true,
   },
   KK_number: {
     type: String,
-    trim: true,
   },
   Blood_type: {
     type: String,
-    trim: true,
   },
   occupation: {
     type: String,
-    trim: true,
   },
   photo: {
     data: Buffer,
     contentType: String,
   },
-  following: [{ type: mongoose.Schema.ObjectId, ref: 'Patient' }],
-  followers: [{ type: mongoose.Schema.ObjectId, ref: 'Patient' }],
+  // following: [{ type: mongoose.Schema.ObjectId, ref: 'Patient' }],
+  // followers: [{ type: mongoose.Schema.ObjectId, ref: 'Patient' }],
 });
 
 PatientSchema.virtual('password')

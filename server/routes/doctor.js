@@ -1,6 +1,9 @@
 const express = require('express');
+const doctorController = require('../controllers/doctor.controller');
 const router = express.Router();
 
-/* GET home page. */
+router.route('/').get(doctorController.doctorID);
+
+router.route('/').post(doctorController.doctorAdd);
 
 module.exports = router;

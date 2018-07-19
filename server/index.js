@@ -2,6 +2,8 @@
 
 const express = require('express');
 const logger = require('./logger');
+const bodyParser = require('body-parser');
+
 
 const argv = require('./argv');
 const port = require('./port');
@@ -19,22 +21,29 @@ mongoose.Promise = require('bluebird');
 mongoose
   .connect(
     'mongodb://localhost/itHealth',
-    { useMongoClient: true },
+  
   )
   .then(() => console.log('connection succesful'))
   .catch(err => console.error(err));
 
 // declare variables routes
 const patient = require('./routes/patient');
+const doctor = require('./routes/doctor');
+const medication = require('./routes/medication');
 
 // ================= setting up ================
 
 const app = express();
 
+// Use the body-parser package in our application
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
 // If you need a backend, e.g. an API, add your custom backend-specific middleware here
 // app.use('/api', myApi);
 
 app.use('/patient', patient);
+app.use('/doctor', doctor);
+app.use('/medication', medication);
 
 // In production we need to pass these values in instead of relying on webpack
 setup(app, {

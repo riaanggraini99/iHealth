@@ -1,10 +1,16 @@
 const mongoose = require('mongoose');
 const crypto = require('crypto');
-const PatientSchema = new mongoose.Schema({
+mongoose.createConnection('mongodb://localhost/itHealth');
+
+mongoose.models = {};
+mongoose.modelSchemas = {};
+
+const DoctorSchema = new mongoose.Schema({
   name: {
     type: String,
+    index :true,
     trim: true,
-    required: 'Name is required',
+    //required: 'Name is required',
   },
   email: {
     type: String,
@@ -12,7 +18,7 @@ const PatientSchema = new mongoose.Schema({
   },
   hashed_password: {
     type: String,
-    required: 'Password is required',
+   // required: 'Password is required',
   },
   salt: String,
   updated: Date,
@@ -36,11 +42,10 @@ const PatientSchema = new mongoose.Schema({
     data: Buffer,
     contentType: String,
   },
-  following: [{ type: mongoose.Schema.ObjectId, ref: 'Patient' }],
-  followers: [{ type: mongoose.Schema.ObjectId, ref: 'Patient' }],
+
 });
 
-PatientSchema.virtual('password')
+DoctorSchema.virtual('password')
   .set(function(password) {
     this._password = password;
     this.salt = this.makeSalt();
@@ -50,7 +55,7 @@ PatientSchema.virtual('password')
     return this._password;
   });
 
-PatientSchema.path('hashed_password').validate(function(v) {
+DoctorSchema.path('hashed_password').validate(function(v) {
   if (this._password && this._password.length < 6) {
     this.invalidate('password', 'Password must be at least 6 characters.');
   }
@@ -59,7 +64,7 @@ PatientSchema.path('hashed_password').validate(function(v) {
   }
 }, null);
 
-PatientSchema.methods = {
+DoctorSchema.methods = {
   authenticate(plainText) {
     return this.encryptPassword(plainText) === this.hashed_password;
   },
@@ -79,4 +84,4 @@ PatientSchema.methods = {
   },
 };
 
-module.exports = mongoose.model('Patient', PatientSchema);
+module.exports = mongoose.model('Doctor', DoctorSchema);

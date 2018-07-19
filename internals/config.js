@@ -40,6 +40,7 @@ const ReactBoilerplate = {
         'connect',
         'formidable',
         'lodash',
+        'body-parser'
       ],
 
       /**
