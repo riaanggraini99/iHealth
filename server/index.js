@@ -4,7 +4,6 @@ const express = require('express');
 const logger = require('./logger');
 const bodyParser = require('body-parser');
 
-
 const argv = require('./argv');
 const port = require('./port');
 const setup = require('./middlewares/frontendMiddleware');
@@ -17,12 +16,9 @@ const { resolve } = require('path');
 const mongoose = require('mongoose').set('debug', true);
 // const promiseLibrary = require('bluebird');
 
-mongoose.Promise = require('bluebird');
+//mongoose.Promise = require('bluebird');
 mongoose
-  .connect(
-    'mongodb://localhost/itHealth',
-  
-  )
+  .connect('mongodb://localhost/itHealth')
   .then(() => console.log('connection succesful'))
   .catch(err => console.error(err));
 
@@ -30,6 +26,8 @@ mongoose
 const patient = require('./routes/patient');
 const doctor = require('./routes/doctor');
 const medication = require('./routes/medication');
+const cases = require('./routes/case');
+
 
 // ================= setting up ================
 
@@ -44,6 +42,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use('/patient', patient);
 app.use('/doctor', doctor);
 app.use('/medication', medication);
+app.use('/case', cases);
 
 // In production we need to pass these values in instead of relying on webpack
 setup(app, {

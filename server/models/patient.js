@@ -1,56 +1,58 @@
 const mongoose = require('mongoose');
 const crypto = require('crypto');
 mongoose.createConnection('mongodb://localhost/itHealth');
-// var db 	=	 mongoose.connection;
- var Schema = mongoose.Schema
 
 mongoose.models = {};
 mongoose.modelSchemas = {};
 
-
-const PatientSchema = new Schema({
+const PatientSchema = new mongoose.Schema({
   name: {
     type: String,
-    index :true,
-    //required: 'Name is required',
+    index: true,
+  
   },
   email: {
     type: String,
-    // unique: 'Email already exists',
-    // match: [/.+\@.+\..+/, 'Please fill a valid email address'],
-    // required: 'Email is required',
+    index: true
   },
   hashed_password: {
     type: String,
-    // required: 'Password is required',
+    index: true
+ 
   },
   salt: String,
   updated: Date,
   created: {
     type: Date,
     default: Date.now,
+    index: true
   },
   ID: {
     type: String,
+    index: true
   },
   address: {
     type: String,
+    index: true
   },
   KK_number: {
     type: String,
+    index: true
   },
   Blood_type: {
     type: String,
+    index: true
   },
   occupation: {
     type: String,
+    index: true
   },
   photo: {
+    // /index: true,
     data: Buffer,
     contentType: String,
+    
   },
-  // following: [{ type: mongoose.Schema.ObjectId, ref: 'Patient' }],
-  // followers: [{ type: mongoose.Schema.ObjectId, ref: 'Patient' }],
 });
 
 PatientSchema.virtual('password')

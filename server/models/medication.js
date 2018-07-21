@@ -3,21 +3,30 @@ const crypto = require('crypto');
 mongoose.createConnection('mongodb://localhost/itHealth');
 
 mongoose.models = {};
-mongoose.modelSchemas = {}
+mongoose.modelSchemas = {};
 
-//User Schema
-var MedicationSchema 	=  new mongoose.Schema({
-	name : {
-		type 	: String,
-		index	: true
-	},
-	dosage 	: String, 
-	warning	: String,
-    pregnancy: String,
-    note : String,
-
+// User Schema
+const MedicationSchema = new mongoose.Schema({
+  name: {
+    type: String,
+    index: true,
+  },
+  dosage: {
+    type: String,
+    index: true,
+  },
+  warning:{
+    type: String,
+    index: true,
+  },
+  pregnancy:{
+    type: String,
+     index: true,
+  },
+  note:{
+    type: String,
+    index: true,
+  }
 });
 
-
-module.exports =  mongoose.model('Medication', MedicationSchema);
-
+module.exports = mongoose.model('Medication', MedicationSchema);

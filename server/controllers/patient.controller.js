@@ -1,4 +1,6 @@
 const Patient = require('../models/patient');
+const mongoose =require('mongoose')
+const db = mongoose.connection
 // const _ = require('lodash');
 const errorHandler = require('./../../internals/config/errohandlerdb');
 // const formidable = require('formidable');
@@ -25,21 +27,36 @@ const createPatient = (req, res, next) => {
   address = req.body.address;
   KK_number = req.body.KK_number;
   occupation = req.body.occupation;
-  photo = req.body.photo
+  photo = req.body.photo;
 
-  patient.save((err, result) => {
+  
+
+  db.collection('patient').insert( (err, result) => {
     if (err) {
       return res.status(400).json({
-        error: errorHandler.getErrorMessage(err)
-      })
-    }	console.log(patient);
+        error: errorHandler.getErrorMessage(err),
+      });
+    }
+    console.log(patient);
     res.status(200).json({
-      message: "Successfully signed up!"
-    })
-    console.log(result)
-  })
-}
+      message: 'Successfully signed up!',
+    });
+    console.log(result);
+  });
+};
 
+
+
+
+// const createPatient = (req, res ) => {
+//   Patient.create(req.body, (err, patient) => {
+//     if (err) res.json({error: err})
+//     res.json({
+//       message: 'This is create',
+//       patient,
+//     });
+//   });
+// }
 // const createPatient = (req, res) => {
 //   // Create a new instance of the Beer model
 //   var patient = new Patient();
@@ -74,7 +91,6 @@ const createPatient = (req, res, next) => {
 //     return res.json({'success':true,'message':'Todo added successfully',patient});
 //   })
 // }
-
 
 module.exports = {
   listPatients,

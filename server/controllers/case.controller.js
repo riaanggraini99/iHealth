@@ -1,31 +1,31 @@
-const Medication = require('../models/medication');
+const Medication = require('../models/case');
  const errorHandler = require('./../../internals/config/errohandlerdb');
 
-const medicationList = (req, res) => {
-  Medication.find((err, medication) => {
+const caseList = (req, res) => {
+  Case.find((err, cases) => {
     if (err) {
       return res.status(400).json({
         error: errorHandler.getErrorMessage(err),
       });
     }
-    res.json(medication);
+    res.json(cases);
   }).select('name email updated created');
 };
 
-const medicationAdd = (req, res) => {
-  const medication = new Medication(req.body);
-  medication.save((err, result) => {
+const caseAdd = (req, res) => {
+  const cases = new Case(req.body);
+  cases.save((err, result) => {
     if (err) {
       return res.status(400).json({
         error: errorHandler.getErrorMessage(err),
       });
     }
     res.status(200).json({
-      message: 'Successfully signed up!',
+      message: 'cases added',
     });
   });
 };
 module.exports = {
-  medicationList,
-  medicationAdd,
+  caseList,
+  caseAdd,
 };

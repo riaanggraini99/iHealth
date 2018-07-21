@@ -8,41 +8,46 @@ mongoose.modelSchemas = {};
 const DoctorSchema = new mongoose.Schema({
   name: {
     type: String,
-    index :true,
+    index: true,
     trim: true,
-    //required: 'Name is required',
+    // required: 'Name is required',
   },
   email: {
     type: String,
     trim: true,
+    index: true,
   },
   hashed_password: {
     type: String,
-   // required: 'Password is required',
+    index: true,
+    // required: 'Password is required',
   },
   salt: String,
   updated: Date,
   created: {
     type: Date,
     default: Date.now,
+    index: true,
   },
   ID: {
     type: String,
     trim: true,
+    index: true,
   },
   address: {
     type: String,
     trim: true,
+    index: true,
   },
   specialist: {
     type: String,
     trim: true,
+    index: true,
   },
   photo: {
     data: Buffer,
     contentType: String,
   },
-
 });
 
 DoctorSchema.virtual('password')
