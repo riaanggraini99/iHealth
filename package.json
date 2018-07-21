@@ -165,6 +165,7 @@
     "ip": "1.1.5",
     "jsonwebtoken": "^8.3.0",
     "lodash": "^4.17.10",
+    "material-ui": "^0.20.1",
     "minimist": "1.2.0",
     "mongodb": "^3.1.1",
     "mongoose": "^5.2.4",

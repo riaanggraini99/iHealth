@@ -13,17 +13,42 @@
 
 import React from 'react';
 import { Switch, Route } from 'react-router-dom';
+import { Helmet } from 'react-helmet';
+import styled from 'styled-components'
+
+
+import Header from 'components/Header/index';
 
 import HomePage from 'containers/HomePage/Loadable';
 import NotFoundPage from 'containers/NotFoundPage/Loadable';
 
+
+const AppWrapper = styled.div`
+  max-width: 100%;
+  margin: 0;
+  display: flex;
+  min-height: 100%;
+  padding: 0;
+  flex-direction: column;
+`;
+
+
 export default function App() {
   return (
-    <div>
+    <AppWrapper>
+      <Helmet
+        titleTemplate="%itHealth"
+        defaultTitle="itHealth"
+      >
+        <meta name="description" content="itHealth" />
+      </Helmet>
+      <Header />
+   
       <Switch>
         <Route exact path="/" component={HomePage} />
         <Route component={NotFoundPage} />
       </Switch>
-    </div>
-  );
-}
+      
+</AppWrapper>
+      );
+    }
