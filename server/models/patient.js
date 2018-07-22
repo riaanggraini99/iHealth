@@ -94,4 +94,4 @@ PatientSchema.methods = {
   },
 };
 
-module.exports = mongoose.model('Patient', PatientSchema);
+module.exports = mongoose.model('Patient', PatientSchema,'patients' );

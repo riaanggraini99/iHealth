@@ -4,25 +4,28 @@ const Patient = require('../models/patient');
 const expressJwt = require('express-jwt');
 const jwt = require('jsonwebtoken');
 const config = require('../../internals/config/config');
-
+const mongoose =require('mongoose')
+const db = mongoose.connection
 
 
 const signin = (req, res) => {
   Patient.findOne({
-    "email": req.body.email
-  }, (err, patient) => {
+    email: stringify(req.params.email)
+  }, (err, patients) => {
+    //console.log(req.body)
 
-    if (err || !patient)
+    if (err || !patients)
+    console.log(err)
       return res.status('401').json({
         error: "User not found"
+        
       })
 
-    if (!patient.authenticate(req.body.password)) {
+    if (!patients.authenticate(req.body.password)) {
       return res.status('401').send({
         error: "Email and password don't match."
       })
     }
-
     const token = jwt.sign({
       _id: patient._id
     }, config.jwtSecret)

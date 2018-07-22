@@ -41,7 +41,10 @@ const ReactBoilerplate = {
         'formidable',
         'lodash',
         'body-parser',
-        'isomorphic-fetch'
+        'isomorphic-fetch',
+        'node-fetch',
+        'promise-polyfill', 
+        'whatwg-fetch'
       ],
 
       /**

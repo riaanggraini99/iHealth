@@ -5,6 +5,9 @@ const db = mongoose.connection
 const errorHandler = require('./../../internals/config/errohandlerdb');
 // const formidable = require('formidable');
 // const fs = require('fs');
+//var mongoose = require('mongoose');
+console.log(mongoose.connection.readyState);
+
 
 const listPatients = (req, res) => {
   Patient.find((err, patients) => {
@@ -31,7 +34,7 @@ const createPatient = (req, res, next) => {
 
   
 
-  db.collection('patient').insert( (err, result) => {
+  patient.save( (err, result) => {
     if (err) {
       return res.status(400).json({
         error: errorHandler.getErrorMessage(err),

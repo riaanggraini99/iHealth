@@ -1,26 +1,28 @@
-import 'isomorphic-fetch';
+import 'whatwg-fetch'
 
+import'node-fetch';
+import Promise from 'promise-polyfill';
 
-
-export function PostLogin(type, patientData){
-    let BaseUrl = 'https://localhost/patient/login'
-
-    return new Promise((resolve, reject) =>{
-        fecth(BaseUrl+type,{
-            headers : { 
-            'Content-Type': 'application/json',
-            'Accept': 'application/json'
-           },
-            method: "POST",
-            body : JSON.stringify(patientData)
-        })
-        .then((Response)=>Response.json())
-        .then((ResponseJson) => {
-            resolve(ResponseJson);
-        })
-        .catch((error)=>{
-            reject(error)
-        })
-
-    })
+// To add to window
+if (!window.Promise) {
+  window.Promise = Promise;
 }
+
+const PostLogin = (patient) => {
+    return fetch('https://localhost:3000/patient', {
+        method: 'GET',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
+        },
+        credentials: 'include',
+        // body: JSON.stringify(patient)
+      })
+      .then((response) => {
+        return response.json()
+      }).catch((err) => console.log(err))
+  }
+
+  export {
+    PostLogin
+  }

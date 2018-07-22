@@ -3,6 +3,8 @@
 const express = require('express');
 const logger = require('./logger');
 const bodyParser = require('body-parser');
+const cookieParser = require('cookie-parser')
+
 
 const argv = require('./argv');
 const port = require('./port');
@@ -34,8 +36,10 @@ const cases = require('./routes/case');
 const app = express();
 
 // Use the body-parser package in our application
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json())
+app.use(bodyParser.urlencoded({ extended: true }))
+app.use(cookieParser())
+
 // If you need a backend, e.g. an API, add your custom backend-specific middleware here
 // app.use('/api', myApi);
 
@@ -74,3 +78,10 @@ app.listen(port, host, async err => {
     logger.appStarted(port, prettyHost);
   }
 });
+
+// Catch unauthorised errors
+app.use((err, req, res, next) => {
+  if (err.name === 'UnauthorizedError') {
+    res.status(401).json({"error" : err.name + ": " + err.message})
+  }
+})
