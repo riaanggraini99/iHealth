@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 const crypto = require('crypto');
-mongoose.createConnection('mongodb://localhost/itHealth');
+mongoose.connect('mongodb://localhost/itHealth');
 
 mongoose.models = {};
 mongoose.modelSchemas = {};

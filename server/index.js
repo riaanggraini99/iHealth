@@ -16,7 +16,7 @@ const { resolve } = require('path');
 const mongoose = require('mongoose').set('debug', true);
 // const promiseLibrary = require('bluebird');
 
-//mongoose.Promise = require('bluebird');
+mongoose.Promise = require('bluebird');
 mongoose
   .connect('mongodb://localhost/itHealth')
   .then(() => console.log('connection succesful'))

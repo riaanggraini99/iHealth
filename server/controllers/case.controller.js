@@ -1,4 +1,4 @@
-const Medication = require('../models/case');
+const Case = require('../models/case');
  const errorHandler = require('./../../internals/config/errohandlerdb');
 
 const caseList = (req, res) => {
