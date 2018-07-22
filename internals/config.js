@@ -41,6 +41,7 @@ const ReactBoilerplate = {
         'formidable',
         'lodash',
         'body-parser',
+        'isomorphic-fetch'
       ],
 
       /**

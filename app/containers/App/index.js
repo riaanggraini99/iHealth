@@ -47,6 +47,7 @@ export default function App() {
       <Switch>
         <Route exact path="/" component={HomePage} />
         <Route component={NotFoundPage} />
+        
       </Switch>
       
 </AppWrapper>
