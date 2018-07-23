@@ -10,17 +10,16 @@ const db = mongoose.connection
 
 const signin = (req, res) => {
   Patient.findOne({
-    email: (req.body.email)
+    "email": (req.body.email)
   }, (err, patients) => {
-
     if (err || !patients)
-    console.log(err)
       return res.status('401').json({
         error: err
         
       })
-
-    if (!patients.authenticate(req.body.password)) {
+const password = req.body.password 
+    if (!patients.authenticate(password)) {
+      console.log(password)
       return res.status('401').send({
         error: "Email and password don't match."
       })

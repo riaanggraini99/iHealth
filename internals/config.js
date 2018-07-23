@@ -44,7 +44,9 @@ const ReactBoilerplate = {
         'isomorphic-fetch',
         'node-fetch',
         'promise-polyfill', 
-        'whatwg-fetch'
+        'whatwg-fetch',
+        'react-mdl',
+        'react-bootstrap'
       ],
 
       /**

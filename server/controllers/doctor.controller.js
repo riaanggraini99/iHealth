@@ -4,32 +4,62 @@ const errorHandler = require('./../../internals/config/errohandlerdb');
 // const formidable = require('formidable');
 // const fs = require('fs');
 
-const doctorID = (req, res) => {
-  Doctor.find((err, doctor) => {
-    if (err) {
-      return res.status(400).json({
-        error: errorHandler.getErrorMessage(err),
-      });
-    }
-    res.json(doctor);
-  }).select('name email updated created');
-};
+ //get all cases
+const doctorList = (req, res,next) => {
+  Doctor.find(function (err, cases) {
+    if (err) return next(err);
+    res.json(cases);
+  });
+}
 
-const doctorAdd = (req, res, next) => {
+//create new docter
+const doctorAdd = (req, res) => {
   const doctor = new Doctor(req.body);
-  doctor.save((err, result) => {
+  console.log(req.body)
+  doctor.save((err, doctor) => {
     if (err) {
       return res.status(400).json({
         error: errorHandler.getErrorMessage(err),
       });
     }
-    console.log(doctor);
+    console.log(doctor)
     res.status(200).json({
-      message: 'Successfully signed up!',
+      message: 'docter added',
     });
   });
 };
+
+//get doctor detail
+const doctorDetail = (req, res,next) =>{
+  Doctor.findById(req.params.id, function (err, doctor) {
+    if (err) return next(err);
+    res.json(doctor);
+  });
+
+} 
+//edit case
+
+const editDoctor = (req,res,next) =>{
+  Doctor.findByIdAndUpdate(req.params.id, req.body, function (err, doctor) {
+    if (err) return next(err);
+    res.json(doctor);
+  });
+}
+//remove case
+
+const removeDoctor = (req, res, next) => {
+
+  Doctor.findByIdAndRemove(req.params.id, req.body, function (err,doctor) {
+    if (err) return next(err);
+    res.json(doctor);
+  });
+}
+
+
 module.exports = {
-  doctorID,
+  doctorList,
   doctorAdd,
+  doctorDetail,
+  editDoctor,
+  removeDoctor 
 };

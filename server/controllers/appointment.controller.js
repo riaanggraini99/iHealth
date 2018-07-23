@@ -44,20 +44,21 @@ const editAppointment = (req,res,next) =>{
   });
 }
 
-// //remove case
+//remove case
 
-// const removeCase = (req, res, next) => {
+const removeAppointment = (req, res, next) => {
 
-//   Case.findByIdAndRemove(req.params.id, req.body, function (err, cases) {
-//     if (err) return next(err);
-//     res.json(cases);
-//   });
-// }
+  Appointment.findByIdAndRemove(req.params.id, req.body, function (err, appointment) {
+    if (err) return next(err);
+    res.json(appointment);
+  });
+}
 
 
 module.exports = {
   appointmentList,
   appoitmentAdd,
   appointmentDetail,
-  editAppointment
+  editAppointment,
+  removeAppointment
 };

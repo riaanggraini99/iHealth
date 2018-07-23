@@ -8,6 +8,8 @@ router.route('/').post(appointmentController.appoitmentAdd);
 
 router.route('/:id').get(appointmentController.appointmentDetail);
 
-router.route('/:id').put(appointmentController.editAppointment)
+router.route('/:id').put(appointmentController.editAppointment);
+
+router.route('/:id').delete(appointmentController.removeAppointment)
 
 module.exports = router;

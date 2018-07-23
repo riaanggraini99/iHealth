@@ -17,12 +17,11 @@ import { Helmet } from 'react-helmet';
 import styled from 'styled-components'
 
 
-import Header from 'components/Header/index';
+import Sidebar from 'components/SideBar/index';
 
 import Footer from 'components/Footer/index';
-import Main from 'components/Main/index';
-import Feature from 'components/Feature/index';
-import Doctor from 'containers/Doctor/Loadable';
+
+
 
 import HomePage from 'containers/HomePage/Loadable';
 import NotFoundPage from 'containers/NotFoundPage/Loadable';
@@ -38,24 +37,16 @@ const AppWrapper = styled.div`
 `;
 
 
-export default function App() {
+export default function Doctor() {
   return (
     <AppWrapper>
-      <Helmet
-        titleTemplate="%itHealth"
-        defaultTitle="itHealth"
-      >
-        <meta name="description" content="itHealth" />
-      </Helmet>
-      <Header />
+  
+      <Sidebar/> 
    
-      <Switch>
-        <Route exact path="/" component={HomePage} />
-        <Route path="/doct" component={Doctor} />
-        <Route component={NotFoundPage} />
-        
-      </Switch>
-      <Footer />
+   
+   
+   
+ 
       
 </AppWrapper>
       );
