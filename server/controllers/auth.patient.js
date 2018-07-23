@@ -10,14 +10,13 @@ const db = mongoose.connection
 
 const signin = (req, res) => {
   Patient.findOne({
-    email: stringify(req.params.email)
+    email: (req.body.email)
   }, (err, patients) => {
-    //console.log(req.body)
 
     if (err || !patients)
     console.log(err)
       return res.status('401').json({
-        error: "User not found"
+        error: err
         
       })
 

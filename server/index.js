@@ -29,6 +29,7 @@ const patient = require('./routes/patient');
 const doctor = require('./routes/doctor');
 const medication = require('./routes/medication');
 const cases = require('./routes/case');
+const appointment = require('./routes/appointment');
 
 
 // ================= setting up ================
@@ -37,7 +38,7 @@ const app = express();
 
 // Use the body-parser package in our application
 app.use(bodyParser.json())
-app.use(bodyParser.urlencoded({ extended: true }))
+app.use(bodyParser.urlencoded({ extended: false }))
 app.use(cookieParser())
 
 // If you need a backend, e.g. an API, add your custom backend-specific middleware here
@@ -47,6 +48,7 @@ app.use('/patient', patient);
 app.use('/doctor', doctor);
 app.use('/medication', medication);
 app.use('/case', cases);
+app.use('/appointment', appointment);
 
 // In production we need to pass these values in instead of relying on webpack
 setup(app, {
@@ -85,3 +87,5 @@ app.use((err, req, res, next) => {
     res.status(401).json({"error" : err.name + ": " + err.message})
   }
 })
+
+

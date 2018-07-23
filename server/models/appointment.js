@@ -2,27 +2,27 @@ const mongoose = require('mongoose');
 const crypto = require('crypto');
 mongoose.connect('mongodb://localhost/itHealth');
 
-// mongoose.models = {};
-// mongoose.modelSchemas = {};
+mongoose.models = {};
+mongoose.modelSchemas = {};
 
-const CaseSchema = new mongoose.Schema({
-  name: {
-    type: String,
-    index: true,
+const AppoitmentSchema = new mongoose.Schema({
+    date: {
+    type: Date,
+    index: true
   },
-  symtons: {
+  place: {
     type: String,
     index: true,
     
   },
-  handling: {
+  reason: {
     type: String,
     index: true,
   },
-  prohibition: {
+  note: {
     type: String,
     index: true,
   },
 });
 
-module.exports = mongoose.model('Case', CaseSchema, 'cases');
+module.exports = mongoose.model('Appointment', AppoitmentSchema, 'appointments');
