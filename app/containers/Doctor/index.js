@@ -36,17 +36,18 @@ const AppWrapper = styled.div`
   flex-direction: column;
 `;
 
-
 export default function Doctor() {
   return (
     <AppWrapper>
+<Helmet
+titleTemplate="%itHealth"
+defaultTitle="itHealth"
+>
+<meta name="description" content="itHealth" />
+</Helmet>
   
-      <Sidebar/> 
-   
-   
-   
-   
- 
+     
+  <p1>aku disni</p1>
       
 </AppWrapper>
       );

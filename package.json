@@ -188,6 +188,8 @@
     "redux-saga": "0.16.0",
     "reselect": "3.0.1",
     "sanitize.css": "4.1.0",
+    "semantic-ui-css": "^2.3.3",
+    "semantic-ui-react": "^0.82.1",
     "session": "^0.1.0",
     "styled-components": "3.3.2",
     "warning": "4.0.1",

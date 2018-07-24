@@ -46,7 +46,9 @@ const ReactBoilerplate = {
         'promise-polyfill', 
         'whatwg-fetch',
         'react-mdl',
-        'react-bootstrap'
+        'react-bootstrap',
+        'semantic-ui-react',
+        'semantic-ui-css'
       ],
 
       /**

@@ -4,9 +4,34 @@ const db = mongoose.connection
 // const _ = require('lodash');
 // const _ = require('lodash');
 const errorHandler = require('./../../internals/config/errohandlerdb');
-// const formidable = require('formidable');
-// const fs = require('fs');
-//var mongoose = require('mongoose');
+const formidable =require('formidable')
+const fs = require('fs');
+
+const uploadPicture = (req, res, next) => {
+  let form = new formidable.IncomingForm()
+  form.keepExtensions = true
+  form.parse(req, (err, fields, files) => {
+    if (err) {
+      return res.status(400).json({
+        error: "Image could not be uploaded"
+      })
+    }
+    let patient = new Patient(fields)
+    post.postedBy= req.profile
+    if(files.photo){
+      post.photo.data = fs.readFileSync(files.photo.path)
+      post.photo.contentType = files.photo.type
+    }
+    patient.save((err, result) => {
+      if (err) {
+        return res.status(400).json({
+          error: errorHandler.getErrorMessage(err)
+        })
+      }
+      res.json(result)
+    })
+  })
+}
 
 //get all patients
 const listPatients = (req, res) => {
@@ -76,5 +101,6 @@ module.exports = {
   createPatient,
   getDetailPatient,
   removePatient,
-  editPatient
+  editPatient,
+  uploadPicture
 };

@@ -7,6 +7,8 @@ router.route('/').get(patientController.listPatients);
 
 router.route('/').post(patientController.createPatient);
 
+router.route('/').post(patientController.uploadPicture);
+
 router.route('/login').post(patientAuth.signin);
 
 router.route('/:id').get(patientController.getDetailPatient);

@@ -16,11 +16,12 @@ import { Switch, Route } from 'react-router-dom';
 import { Helmet } from 'react-helmet';
 import styled from 'styled-components'
 
+import Header from 'components/Header/index';
 
+import Footer from 'components/Footer/index';
 import Main from 'components/Main/index';
 import Feature from 'components/Feature/index';
-
-
+import LoginPage from 'components/LoginPage/loginForm'
 import HomePage from 'containers/HomePage/Loadable';
 import NotFoundPage from 'containers/NotFoundPage/Loadable';
 
@@ -44,10 +45,11 @@ export default function Doctor() {
       >
         <meta name="description" content="itHealth" />
       </Helmet>
-      <Main />
+      <Header />
+      <LoginPage />
    
    
-      <Feature />
+   <Footer/>
    
  
       
