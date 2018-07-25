@@ -7,27 +7,23 @@ mongoose.connect('mongodb://localhost/itHealth');
 
 const CaseSchema = new mongoose.Schema({
   _id: mongoose.Schema.Types.ObjectId,
-  name: {
-    type: String,
-    index: true,
+    date: {
+        type: Date,
+        index: true
   },
-  symtons: {
-    type: String,
+  biaya_konsul: {
+    type: Number,
     index: true,
     
   },
-  handling: {
-    type: String,
+  biaya_tambahan: {
+    type:Number ,
     index: true,
   },
-  prohibition: {
-    type: String,
+  total: {
+    type: Number,
     index: true,
   },
-  havedBy: {type: mongoose.Schema.ObjectId, ref: 'Patient',
-  type: String,
-  index: true,
-}
 });
 
 module.exports = mongoose.model('Case', CaseSchema, 'cases');

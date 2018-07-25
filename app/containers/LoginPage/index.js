@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import api from '../api/patient';
+import api from '../../api/patient';
+
 
 class Login extends Component {
   constructor(props) {

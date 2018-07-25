@@ -6,10 +6,10 @@ router.route('/').get(appointmentController.appointmentList);
 
 router.route('/').post(appointmentController.appoitmentAdd);
 
-router.route('/:id').get(appointmentController.appointmentDetail);
+router.route('/:appointmentId').get(appointmentController.appointmentDetail);
 
-router.route('/:id').put(appointmentController.editAppointment);
+router.route('/:appointmentId').put(appointmentController.editAppointment);
 
-router.route('/:id').delete(appointmentController.removeAppointment)
+router.route('/:appointmentId').delete(appointmentController.removeAppointment)
 
 module.exports = router;

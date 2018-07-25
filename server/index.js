@@ -30,7 +30,7 @@ const doctor = require('./routes/doctor');
 const medication = require('./routes/medication');
 const cases = require('./routes/case');
 const appointment = require('./routes/appointment');
-
+const auth = require('./routes/auth.patient')
 
 // ================= setting up ================
 
@@ -49,6 +49,7 @@ app.use('/doctor', doctor);
 app.use('/medication', medication);
 app.use('/case', cases);
 app.use('/appointment', appointment);
+app.use('/patient', auth)
 
 // In production we need to pass these values in instead of relying on webpack
 setup(app, {

@@ -22,9 +22,8 @@ import Footer from 'components/Footer/index';
 import Main from 'components/Main/index';
 import Feature from 'components/Feature/index';
 import LoginPage from 'components/LoginPage/loginForm'
-import HomePage from 'containers/HomePage/Loadable';
+//import HomePage from 'containers/HomePage/Loadable';
 import NotFoundPage from 'containers/NotFoundPage/Loadable';
-
 
 const AppWrapper = styled.div`
   max-width: 100%;
@@ -36,23 +35,15 @@ const AppWrapper = styled.div`
 `;
 
 
-export default function Doctor() {
-  return (
-    <AppWrapper>
-      <Helmet
-        titleTemplate="%itHealth"
-        defaultTitle="itHealth"
-      >
-        <meta name="description" content="itHealth" />
-      </Helmet>
-      <Header />
-      <LoginPage />
-   
-   
-   <Footer/>
-   
- 
+export default class HomePage extends React.PureComponent {
+
+  render() {
+    return(
+        <div>
+          <h1>welcome to the jungle</h1>
       
-</AppWrapper>
+        </div>
       );
     }
+  }
+  

@@ -6,6 +6,7 @@ mongoose.models = {};
 mongoose.modelSchemas = {};
 
 const DoctorSchema = new mongoose.Schema({
+  _id: mongoose.Schema.Types.ObjectId,
   name: {
     type: String,
     index: true,

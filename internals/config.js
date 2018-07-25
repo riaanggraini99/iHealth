@@ -30,7 +30,6 @@ const ReactBoilerplate = {
         'sanitize.css',
         'mongodb',
         'mongoose',
-        'crypto',
         'jsonwebtoken',
         'express-jwt',
         'fs',
@@ -48,7 +47,11 @@ const ReactBoilerplate = {
         'react-mdl',
         'react-bootstrap',
         'semantic-ui-react',
-        'semantic-ui-css'
+        'semantic-ui-css',
+        'validator',
+        'axios',
+        'bcrypt'
+
       ],
 
       /**

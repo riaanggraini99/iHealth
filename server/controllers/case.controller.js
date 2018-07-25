@@ -1,5 +1,5 @@
 const Case = require('../models/case');
- const errorHandler = require('./../../internals/config/errohandlerdb');
+
 
  //get all cases
 const caseList = (req, res,next) => {

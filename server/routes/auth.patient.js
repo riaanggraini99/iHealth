@@ -1,9 +1,11 @@
 const express = require('express');
-const authCtrl = require('../controllers/auth.patient');
+const auth_patient = require('../controllers/auth.patient');
+const checkAuth = require('../middlewares/auth');
 
 const router = express.Router();
 
-router.route('/auth/signin').post(authCtrl.signin);
-router.route('/auth/signout').get(authCtrl.signout);
+router.post("/signup", auth_patient.signup);
+
+router.post("/signin", auth_patient.signin);
 
 module.exports = router;

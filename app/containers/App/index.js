@@ -16,10 +16,11 @@ import { Switch, Route } from 'react-router-dom';
 import { Helmet } from 'react-helmet';
 import styled from 'styled-components'
 import Doctor from 'containers/Doctor/Loadable';
-
+import PatientList from 'containers/PatientList/Loadable';
 import HomePage from 'containers/HomePage/Loadable';
 import NotFoundPage from 'containers/NotFoundPage/Loadable';
-import LoginPage from 'components/LoginPage/index'
+import LoginPage from 'containers/LoginPage/index'
+
 
 const AppWrapper = styled.div`
   max-width: 100%;
@@ -45,6 +46,9 @@ export default function App() {
       <Switch>
         <Route exact path="/" component={HomePage} />
         <Route exact path="/doctorPanel" component={Doctor} />
+        <Route  path="/patientList" component={PatientList} />
+        <Route  path="/patients/login" component={LoginPage} />
+     
         <Route component={NotFoundPage} />
 
         
