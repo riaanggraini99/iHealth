@@ -68,20 +68,6 @@ const listPatients = (req, res, next) =>{
   });
 }
 
-
-// const listPatients = (req, res) => {
-//   Patient.find((err, patients) => {
-//     if (err) {
-//       return res.status(400).json({
-//         error: errorHandler.getErrorMessage(err),
-//       });
-//     }
-//     res.json(patients);
-//     console.log(patients)
-//   }).select('name email updated created');
-// };
-
-
 //create patient
 const createPatient = (req, res, next) => {
   const patient = new Patient({

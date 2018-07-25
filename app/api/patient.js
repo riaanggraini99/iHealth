@@ -34,10 +34,16 @@ export default {
       })
       .then(res => {
         const { data } = res;
-        localStorage.setItem('user', JSON.stringify(data));
+        localStorage.setItem('patient', JSON.stringify(data));
         axios.defaults.headers.common['Authorization'] = 'Bearer ' + data.token;
         return data;
       })
       .catch(errHandler);
-  }
+  },
+  signup(patientInfo) {
+    return service
+      .post('/signup', patientInfo)
+      .then(res => res.data)
+      .catch(errHandler);
+  },
 };

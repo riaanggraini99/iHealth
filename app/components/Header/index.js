@@ -25,10 +25,7 @@ class Header extends React.Component {
                   <a href="">Who we are</a>
                 </li>
                 <li>
-                  <a href=""><i>login</i></a>
-                </li>
-                <li>
-                  <a href=""><i>register</i></a>
+                  <a href="">logout</a>
                 </li>
               </ul>
             </div>

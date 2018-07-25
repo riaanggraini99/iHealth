@@ -24,10 +24,6 @@ const MedicationSchema = new mongoose.Schema({
     type: String,
     index: true,
   },
-  pregnancy:{
-    type: String,
-     index: true,
-  },
   note:{
     type: String,
     index: true,

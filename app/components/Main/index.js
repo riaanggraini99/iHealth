@@ -3,6 +3,7 @@ import { FormattedMessage } from 'react-intl';
 
 import { Switch, Route } from 'react-router-dom';
 import gambar from '../../images/homepage.jpg';
+
 class Main extends React.Component {
     render() {
       return (
@@ -19,11 +20,14 @@ class Main extends React.Component {
               </h3>
     
               <p className="big">
-                login as
+                How can we help you?
               </p>
     
-              <a className="btn waves-light waves-effect m-r-16">Patient</a>
-              <a className="btn waves-light waves-effect">Doctor</a>
+              <a href="/patients/login" className="btn waves-light waves-effect">Make Appointment</a>
+              <a className="btn waves-light waves-effect">Our Doctors  </a>
+              <a className="btn waves-light waves-effect">Medical records</a>
+              <a className="btn waves-light waves-effect">Billing   </a>
+
             </div>
           </div>
         </section>

@@ -32,7 +32,7 @@ const AppoitmentSchema = new mongoose.Schema({
     index : true,
   },
   createdBy:  { type: mongoose.Schema.Types.ObjectId, ref: 'Patient', required: true,
-index : true,
+
 }
 });
 

@@ -19,7 +19,9 @@ import Doctor from 'containers/Doctor/Loadable';
 import PatientList from 'containers/PatientList/Loadable';
 import HomePage from 'containers/HomePage/Loadable';
 import NotFoundPage from 'containers/NotFoundPage/Loadable';
-import LoginPage from 'containers/LoginPage/index'
+import LoginPage from 'containers/LoginPage/Loadable';
+import RegisterPatient from 'containers/RegisterPatient/Loadable'
+import AddAppointment from 'containers/addAppointment/Loadable'
 
 
 const AppWrapper = styled.div`
@@ -47,8 +49,9 @@ export default function App() {
         <Route exact path="/" component={HomePage} />
         <Route exact path="/doctorPanel" component={Doctor} />
         <Route  path="/patientList" component={PatientList} />
-        <Route  path="/patients/login" component={LoginPage} />
-     
+        <Route  path="/patients/logins" component={LoginPage} />
+        <Route path= '/patients/register' component={RegisterPatient}/>
+        <Route path = '/patients/add-appointment' component={AddAppointment}/>
         <Route component={NotFoundPage} />
 
         

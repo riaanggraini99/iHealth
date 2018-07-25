@@ -14,20 +14,25 @@ const CaseSchema = new mongoose.Schema({
   symtons: {
     type: String,
     index: true,
-    
   },
   handling: {
     type: String,
     index: true,
   },
-  prohibition: {
+  medication: {
+    type: mongoose.Schema.ObjectId, ref: 'Medication',
     type: String,
     index: true,
   },
-  havedBy: {type: mongoose.Schema.ObjectId, ref: 'Patient',
-  type: String,
-  index: true,
-}
+  havedBy: {
+    type: mongoose.Schema.ObjectId, ref: 'Patient',
+    type: String,
+    index: true,
+  date: { 
+    type: Date,
+    default: Date.now, 
+    index: true },
+  }
 });
 
 module.exports = mongoose.model('Case', CaseSchema, 'cases');

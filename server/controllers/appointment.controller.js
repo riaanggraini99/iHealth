@@ -6,8 +6,8 @@ const Patient = require('../models/patient');
  //get all appointment
 const appointmentList = (req, res,next) => {
   Appointment.find()
-  .select("date _id")
-.populate("patient", "name")
+  .select("date place reason note _id")
+
   .exec()
   .then(docs => {
     res.status(200).json({
@@ -15,8 +15,12 @@ const appointmentList = (req, res,next) => {
       appointments: docs.map(doc => {
         return {
           _id: doc._id,
-          patient: doc.patient,
           date: doc.date,
+          place: doc.place,
+          reason: doc.reason,
+          note: doc.note,
+          createdBy: doc.createdBy,
+
           request: {
             type: "GET",
             url: "http://localhost:3000/appointment" + doc._id
@@ -47,7 +51,7 @@ const appoitmentAdd = (req, res) => {
       date: req.body.date,
       reason: req.body.reason,
       note  :req.body.note,
-      appointment: req.body.appointmentId
+      patient: req.body.patientId
     });
     return appointment.save();
   })
@@ -57,13 +61,15 @@ const appoitmentAdd = (req, res) => {
       message: "appointment stored",
       createdAppointment: {
         _id: result._id,
-        patient: result.patient,
-        email: result.email,
-        name: result.name,
+      createdBy : result.patientId,
+      date: result.date,
+      reason: result.reason,
+      note  :req.result.note,
+      patient: req.body.patientId,
       },
       request: {
         type: "GET",
-        url: "http://localhost:3000/appoimtment/" + result._id
+        url: "http://localhost:3000/appointment/" + result._id
       }
     });
   })
@@ -89,7 +95,7 @@ const appointmentDetail = (req, res,next) =>{
       appointment: appointment,
       request: {
         type: "GET",
-        url: "http://localhost:3000/appointment/" 
+        url: "http://localhost:3000/appointment" 
       }
     });
   })
@@ -120,7 +126,7 @@ const removeAppointment = (req, res, next) => {
       message: "Appointment deleted",
       request: {
         type: "POST",
-        url: "http://localhost:3000/orders",
+        url: "http://localhost:3000/appointment",
         body: { appointmentId: "ID", date: "date", reason:"String" }
       }
     });
