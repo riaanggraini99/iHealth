@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const service = axios.create({
-  baseURL: process.env.NODE_ENV === 'production' ? '/api' : 'http://localhost:3000/appointment',
+  baseURL: process.env.NODE_ENV === 'production' ? '/api' : 'http://localhost:3000/medication',
 });
 
 const errHandler = err => {
@@ -12,11 +12,10 @@ const errHandler = err => {
 export default {
     service: service,
     
-    addAppointment(data) {
+    getMedication() {
         return service
-          .post('/appointment', data)
+          .get('/')
           .then(res => res.data)
           .catch(errHandler);
       },
-      
 };

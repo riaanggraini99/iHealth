@@ -20,8 +20,10 @@ import PatientList from 'containers/PatientList/Loadable';
 import HomePage from 'containers/HomePage/Loadable';
 import NotFoundPage from 'containers/NotFoundPage/Loadable';
 import LoginPage from 'containers/LoginPage/Loadable';
-import RegisterPatient from 'containers/RegisterPatient/Loadable'
-import AddAppointment from 'containers/addAppointment/Loadable'
+import RegisterPatient from 'containers/RegisterPatient/Loadable';
+import AddAppointment from 'containers/addAppointment/Loadable';
+import AdminHomePage from 'containers/AdminHomePage/Loadable';
+import Med from 'containers/Medication/Loadable'
 
 
 const AppWrapper = styled.div`
@@ -52,6 +54,8 @@ export default function App() {
         <Route  path="/patients/logins" component={LoginPage} />
         <Route path= '/patients/register' component={RegisterPatient}/>
         <Route path = '/patients/add-appointment' component={AddAppointment}/>
+        <Route path = '/admin' component={AdminHomePage}/>
+        <Route path = '/medications' component={Med}/>
         <Route component={NotFoundPage} />
 
         

@@ -1,6 +1,5 @@
 const Medication = require('../models/medication');
 const Case = require('../models/case')
-const errorHandler = require('./../../internals/config/errohandlerdb');
 
 //get all medications
 const medicationList = (req, res) => {
@@ -74,13 +73,12 @@ const medicationAdd = (req, res) => {
     note:req.body.note,
     price: req.body.price,
   });
-  patient
-    .save()
+  medication.save()
     .then(result => {
       console.log(result);
       res.status(201).json({
-        message: "Created new patient successfully",
-        createdPatient: {
+        message: "Created new medication successfully",
+        createdMedication: {
           _id: result._id,
           name: result.name,
           for_case: result.for_case,
@@ -89,7 +87,7 @@ const medicationAdd = (req, res) => {
           price: req.result.price,
             request: {
                 type: 'GET',
-                url: "http://localhost:3000/patient/" + result._id
+                url: "http://localhost:3000/medication/" + result._id
             }
         }
       });
