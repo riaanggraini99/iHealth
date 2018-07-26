@@ -12,7 +12,7 @@ const MedicationSchema = new mongoose.Schema({
     type: String,
     index: true,
   },
-  for_case:{
+  usage:{
     type: String,
     index: true
   },
@@ -35,4 +35,4 @@ const MedicationSchema = new mongoose.Schema({
 
 });
 
-module.exports = mongoose.model('Medication', MedicationSchema);
+module.exports = mongoose.model('Medication', MedicationSchema, 'medications');

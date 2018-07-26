@@ -11,10 +11,8 @@ class Patients extends Component {
   componentDidMount() {
     api.getPatients()
       .then( patients => {
-        console.log( patients)
-        this.setState({
-          patients:  patients
-        })
+        console.log(patients)
+        this.setState({patients: patients.patient})
       })
       .catch(err => console.log(err))
   }

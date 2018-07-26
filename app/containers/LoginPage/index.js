@@ -1,3 +1,5 @@
+
+import { Button, Checkbox, Form } from 'semantic-ui-react'
 import React, { Component } from 'react';
 import api from '../../api/patient';
 
@@ -34,14 +36,23 @@ class Login extends Component {
     return (
       <div className="Login">
         <h2>Login</h2>
-        <form>
+        <Form>
+        
+      <Form.Field>
           Email: <input type="text" value={this.state.email} onChange={(e) => {this.handleInputChange("email", e)}} /> <br/>
+    </Form.Field>
+      <Form.Field>
           Password: <input type="password" value={this.state.password} onChange={(e) => {this.handleInputChange("password", e)}}  /> <br/>
-          <button onClick={(e) => this.handleClick(e)}>Login</button>
-        </form>
+    </Form.Field>
+
+          <Button onClick={(e) => this.handleClick(e)}>Login</Button>
+      </Form>
+        
       </div>
     );
   }
 }
+
+
 
 export default Login;

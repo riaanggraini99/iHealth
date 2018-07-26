@@ -1,10 +1,11 @@
 const Medication = require('../models/medication');
 const Case = require('../models/case')
+const mongoose = require('mongoose')
 
 //get all medications
 const medicationList = (req, res) => {
   Medication.find()
-  .select("name for_case dosage note price _id")
+  .select("name usage dosage note price _id")
 
   .exec()
   .then(docs => {
@@ -14,7 +15,7 @@ const medicationList = (req, res) => {
         return {
           _id: doc._id,
           name: doc.name,
-          for_case: doc.for_case,
+          usage: doc.usage,
           dosage: doc.dosage,
           note: doc.note,
           price: doc.price,
@@ -39,7 +40,7 @@ const medicationList = (req, res) => {
 const DetailMedication = (req, res, next) => {
   const id = req.params.medicationId;
   Medication.findById(id)
-    .select('name for_case dosage warning note price _id')
+    .select('name usage dosage warning note price _id')
     .exec()
     .then(doc => {
       console.log("From database", doc);
@@ -64,27 +65,28 @@ const DetailMedication = (req, res, next) => {
 }
 
 //create new medications
-const medicationAdd = (req, res) => {
+const medicationAdd = (req, res, next) => {
   const medication = new Medication({
     _id: new mongoose.Types.ObjectId(),
     name: req.body.name,
-    for_case: req.body.for_case,
+    usage: req.body.usage,
     dosage: req.body.dosage,
     note:req.body.note,
-    price: req.body.price,
+    price: req.body.price
   });
-  medication.save()
+  medication
+  .save()
     .then(result => {
       console.log(result);
       res.status(201).json({
         message: "Created new medication successfully",
         createdMedication: {
-          _id: result._id,
           name: result.name,
-          for_case: result.for_case,
+          usage: result.usage,
           dosage: result.dosage,
-          note:req.result.note,
-          price: req.result.price,
+          note:result.note,
+          price:result.price,
+          _id: result._id,
             request: {
                 type: 'GET',
                 url: "http://localhost:3000/medication/" + result._id

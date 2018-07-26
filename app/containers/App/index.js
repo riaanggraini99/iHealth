@@ -24,6 +24,7 @@ import RegisterPatient from 'containers/RegisterPatient/Loadable';
 import AddAppointment from 'containers/addAppointment/Loadable';
 import AdminHomePage from 'containers/AdminHomePage/Loadable';
 import Med from 'containers/Medication/Loadable'
+import AddMedication from 'containers/addMedication/Loadable'
 
 
 const AppWrapper = styled.div`
@@ -51,11 +52,12 @@ export default function App() {
         <Route exact path="/" component={HomePage} />
         <Route exact path="/doctorPanel" component={Doctor} />
         <Route  path="/patientList" component={PatientList} />
-        <Route  path="/patients/logins" component={LoginPage} />
+        <Route  path="/patients/login" component={LoginPage} />
         <Route path= '/patients/register' component={RegisterPatient}/>
         <Route path = '/patients/add-appointment' component={AddAppointment}/>
         <Route path = '/admin' component={AdminHomePage}/>
         <Route path = '/medications' component={Med}/>
+        <Route path = '/add-medication' component={AddMedication}/>
         <Route component={NotFoundPage} />
 
         

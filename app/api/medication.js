@@ -14,7 +14,15 @@ export default {
     
     getMedication() {
         return service
-          .get('/')
+ 
+        .get('/')
+        .then(res => res.data)
+        .catch(errHandler);
+      },
+
+      addMedication(data) {
+        return service
+          .post('/', data)
           .then(res => res.data)
           .catch(errHandler);
       },

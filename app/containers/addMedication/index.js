@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 // import { Route, Switch, NavLink, Link } from 'react-router-dom';
-import api from '../../api/appointment';
+import api from '../../api/medication';
 // import './AddCountry.css';
 
 
@@ -9,11 +9,12 @@ class addAppointment extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      patientId:"",
-      date: "",
-      place: "",
-      reason: "",
+      name:"",
+      usage: "",
+      dosage: "",
+      warning: "",
       note: "",
+      price :'',
       message: null
     }
   }
@@ -27,24 +28,25 @@ class addAppointment extends Component {
 
   handleClick(e) {
     e.preventDefault()
-    console.log(this.state.name, this.state.description)
+    console.log(this.state.name, this.state.name)
     let data = {
-      patientId: this.state.patientId,
-      date: this.state.date,
-      place: this.state.place,
-      reason:this.state.reason,
-      note: this.state.note
+      name:  this.state.name,
+      usage: this.state.usage,
+      warning: this.state.warning,
+      note: this.state.note,
+      price: this.state.price,
     }
-    api.addAppointment(data)
+    api.addMedication(data)
       .then(result => {
         console.log('SUCCESS!')
         this.setState({
-          patientId:"",
-          date: "",
-          place: "",
-          reason: "",
-          note: "",
-          message: `Your Appointment at '${this.state.date}' has been created`
+          name:"",
+      usage: "",
+      dosage: "",
+      warning: "",
+      note: "",
+      price :'',
+          message: `The Medication  has been created`
         })
         setTimeout(() => {
           this.setState({
@@ -59,13 +61,15 @@ class addAppointment extends Component {
   render() {                
     return (
       <div className=" addAppointment ">
-        <h2>Add Appointment</h2>
+        <h2>Add Medication</h2>
         <form>
-          date: <input type="date" value={this.state.date} onChange={(e) => {this.handleInputChange("date", e)}} /> <br/>
-          place <input type="text" value={this.state.place} onChange={(e) => {this.handleInputChange("place", e)}}  /> <br/>
-          reason <input type="number" value={this.state.reason} onChange={(e) => {this.handleInputChange("reason", e)}}  /> <br/>
+          name: <input type="text" value={this.state.name} onChange={(e) => {this.handleInputChange("name", e)}} /> <br/>
+          usage:  <input type="text" value={this.state.usage} onChange={(e) => {this.handleInputChange("usage", e)}} /> <br/>
+          dosage: <input type="text" value={this.state.dosage} onChange={(e) => {this.handleInputChange("dosage", e)}}  /> <br/>
+          warning: <input type="text" value={this.state.warning} onChange={(e) => {this.handleInputChange("warning", e)}}  /> <br/>
           another note <textarea value={this.state.note} cols="30" rows="10" onChange={(e) => {this.handleInputChange("note", e)}} ></textarea> <br/>
-          <button onClick={(e) => this.handleClick(e)}>Create country</button>
+          price <input type="number" value={this.state.price} onChange={(e) => {this.handleInputChange("price", e)}}  /> <br/>
+          <button onClick={(e) => this.handleClick(e)}>Create Medicine</button>
         </form>
         <div style={{
           margin: 10,
