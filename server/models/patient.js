@@ -9,64 +9,60 @@ const PatientSchema = new mongoose.Schema({
   name: {
     type: String,
     index: true,
-  
   },
   email: {
-    type: String, 
-    required: true, 
-    unique: true, 
+    type: String,
+    required: true,
+    unique: true,
     match: /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/,
-    index: true
+    index: true,
   },
- password: {
+  password: {
     type: String,
     index: true,
-    required: true, 
- 
+    required: true,
   },
   salt: String,
   updated: Date,
   created: {
     type: Date,
     default: Date.now,
-    index: true
+    index: true,
   },
   ID: {
     type: String,
-    index: true
+    index: true,
   },
   address: {
     type: String,
-    index: true
+    index: true,
   },
   KK_number: {
     type: String,
-    index: true
+    index: true,
   },
   Blood_type: {
     type: String,
-    index: true
+    index: true,
   },
   occupation: {
     type: String,
-    index: true
+    index: true,
   },
-  disease:{
-    type :String,
-    index:true
-},
-med:{type: mongoose.Schema.ObjectId, ref: 'Medication',
-index:true},
+  disease: {
+    type: String,
+    index: true,
+  },
+  med: {
+    type: mongoose.Schema.ObjectId,
+    ref: 'Medication',
+    index: true,
+  },
   photo: {
     // /index: true,
     data: Buffer,
     contentType: String,
-    
   },
 });
 
-const Patient = mongoose.model('Patient', PatientSchema,'patients' );
-const login = new Patient({ email: 'admin@admin.com', password: 'admin123' });
-
-
-module.exports = mongoose.model('Patient', PatientSchema,'patients' );
+module.exports = mongoose.model('Patient', PatientSchema, 'patients');

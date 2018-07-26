@@ -1,21 +1,19 @@
 const mongoose = require('mongoose');
-const crypto = require('crypto');
-mongoose.connect('mongodb://localhost/itHealth');
 
+mongoose.connect('mongodb://localhost/itHealth');
 
 const CaseSchema = new mongoose.Schema({
   _id: mongoose.Schema.Types.ObjectId,
-    date: {
-        type: Date,
-        index: true
+  date: {
+    type: Date,
+    index: true,
   },
   biaya_konsul: {
     type: Number,
     index: true,
-    
   },
   biaya_tambahan: {
-    type:Number ,
+    type: Number,
     index: true,
   },
   total: {
