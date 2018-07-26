@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 // import { Route, Switch, NavLink, Link } from 'react-router-dom';
 import api from '../../api/appointment';
-// import './AddCountry.css';
+
 
 
 class addAppointment extends Component {
@@ -62,7 +62,7 @@ class addAppointment extends Component {
   render() {                
     return (
       <div className=" addAppointment ">
-        <h2>Add Appointment</h2>
+        <h2>Request Appointment</h2>
         <form>
 
           date: <input type="date" value={this.state.date} onChange={(e) => {this.handleInputChange("date", e)}} /> <br/>

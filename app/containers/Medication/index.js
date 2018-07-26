@@ -39,6 +39,9 @@ class Medication extends Component {
           <Header/>
         <Sidebar />
         <AppWrapper>
+          <div>
+            <h4><a href="add-medication"><i> + add new medicine</i></a></h4>
+          </div>
     <table className="table table-striped table-padding">
           <thead>
               <tr className="heading">

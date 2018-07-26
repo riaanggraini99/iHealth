@@ -56,9 +56,9 @@ export default function App() {
         <Route exact path="/doctorPanel" component={Doctor} />
         <Route  path="/patientList" component={PatientList} />
         <Route  path="/patients/login" component={LoginPage} />
-        <Route path= '/patients/register' component={RegisterPatient}/>
+        <Route path= '/patients/add' component={RegisterPatient}/>
         <Route path = '/patients/add-appointment' component={AddAppointment}/>
-        <Route path = '/admin' component={AdminHomePage}/>
+        <Route path = '/doctor' component={AdminHomePage}/>
         <Route path = '/medications' component={Med}/>
         <Route path = '/add-medication' component={AddMedication}/>
         <Route path = '/appointments' component={Appointment}/>

@@ -3,7 +3,7 @@ import axios from 'axios';
 // import { Route, Switch, NavLink, Link } from 'react-router-dom';
 import api from '../../api/medication';
 import { Link } from 'react-router-dom';
-// import './AddCountry.css';
+
 import Header from 'components/adminHeader/index';
 import Sidebar from 'components/adminSidebar/index';
 import Feature from 'components/Feature/index';
@@ -11,7 +11,7 @@ import Feature from 'components/Feature/index';
 import styled from 'styled-components'
 
 const AppWrapper = styled.div`
-  max-width: 50%;
+  max-width: 30%;
   margin: 0;
   display: flex;
   min-height: 50%;
@@ -20,7 +20,7 @@ const AppWrapper = styled.div`
 `;
 
 
-class addAppointment extends Component {
+class addMedication extends Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -54,6 +54,7 @@ class addAppointment extends Component {
     api.addMedication(data)
       .then(result => {
         console.log('SUCCESS!')
+        this.props.history.push("/medications")
         this.setState({
           name:"",
       usage: "",
@@ -77,11 +78,11 @@ class addAppointment extends Component {
   render() {                
     return (
       
-      <div className=" addAppointment ">
+      <div className=" addMedicine ">
       <Header />
       <Sidebar/>
       <AppWrapper>
-        <h2>Add Medication</h2>
+        <h2>add Medicine</h2>
         <form>
           name: <input type="text" value={this.state.name} onChange={(e) => {this.handleInputChange("name", e)}} /> <br/>
           usage:  <input type="text" value={this.state.usage} onChange={(e) => {this.handleInputChange("usage", e)}} /> <br/>
@@ -104,4 +105,4 @@ class addAppointment extends Component {
   }
 }
 
-export default  addAppointment ;
+export default  addMedication ;

@@ -37,6 +37,9 @@ class Patients extends Component {
           <Header/>
         <Sidebar />
         <AppWrapper>
+        <div>
+            <h4><a href="/patients/add"><i> + add new patient</i></a></h4>
+          </div>
     <table className="table table-striped table-padding">
           <thead>
               <tr className="heading">

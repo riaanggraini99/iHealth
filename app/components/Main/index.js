@@ -23,10 +23,10 @@ class Main extends React.Component {
                 How can we help you?
               </p>
     
-              <a href="/patients/login" className="btn waves-light waves-effect">Make Appointment</a>
-              <a className="btn waves-light waves-effect">Our Doctors  </a>
-              <a className="btn waves-light waves-effect">Medical records</a>
-              <a className="btn waves-light waves-effect">Billing   </a>
+              <a href="/patients/add-appointment" className="btn waves-light waves-effect">Make Appointment</a>
+              <a href='/service'className="btn waves-light waves-effect">service  </a>
+              <a href = 'medical-records'className="btn waves-light waves-effect">Medical records</a>
+              <a href='/billing' className="btn waves-light waves-effect">Billing   </a>
 
             </div>
           </div>
