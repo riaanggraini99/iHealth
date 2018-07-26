@@ -25,31 +25,34 @@ import AddAppointment from 'containers/addAppointment/Loadable';
 import AdminHomePage from 'containers/AdminHomePage/Loadable';
 import Med from 'containers/Medication/Loadable'
 import AddMedication from 'containers/addMedication/Loadable'
-
+import api from '../../api/patient';
+import Appointment from 'containers/Appointment/Loadable'
 
 const AppWrapper = styled.div`
-  max-width: 100%;
-  margin: 0;
-  display: flex;
-  min-height: 100%;
-  padding: 0;
-  flex-direction: column;
+max-width: 100%;
+margin: 0;
+display: flex;
+min-height: 100%;
+padding: 0;
+flex-direction: column;
 `;
 
-
 export default function App() {
+ 
   return (
     <AppWrapper>
       <Helmet
         titleTemplate="%itHealth"
         defaultTitle="itHealth"
+        
       >
         <meta name="description" content="itHealth" />
       </Helmet>
       
    
       <Switch>
-        <Route exact path="/" component={HomePage} />
+        <Route exact path="/" component={LoginPage} />
+        <Route exact path="/homepage" component={HomePage} />
         <Route exact path="/doctorPanel" component={Doctor} />
         <Route  path="/patientList" component={PatientList} />
         <Route  path="/patients/login" component={LoginPage} />
@@ -58,6 +61,7 @@ export default function App() {
         <Route path = '/admin' component={AdminHomePage}/>
         <Route path = '/medications' component={Med}/>
         <Route path = '/add-medication' component={AddMedication}/>
+        <Route path = '/appointments' component={Appointment}/>
         <Route component={NotFoundPage} />
 
         
@@ -67,3 +71,4 @@ export default function App() {
 </AppWrapper>
       );
     }
+  

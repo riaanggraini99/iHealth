@@ -14,9 +14,17 @@ export default {
     
     addAppointment(data) {
         return service
-          .post('/appointment', data)
+          .post('/', data)
           .then(res => res.data)
           .catch(errHandler);
       },
+      getAppointment() {
+        return service
+ 
+        .get('/')
+        .then(res => res.data)
+        .catch(errHandler);
+      },
+
       
 };

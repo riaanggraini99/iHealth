@@ -5,7 +5,7 @@ const checkAuth = require('../middlewares/auth');
 
 router.route('/').get(appointmentController.appointmentList);
 
-router.route('/').post(checkAuth, appointmentController.appoitmentAdd);
+router.route('/').post(appointmentController.appoitmentAdd);
 
 router.route('/:appointmentId').get(appointmentController.appointmentDetail);
 

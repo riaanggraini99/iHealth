@@ -19,7 +19,7 @@ const appointmentList = (req, res,next) => {
           place: doc.place,
           reason: doc.reason,
           note: doc.note,
-          createdBy: doc.createdBy,
+          patient: doc.patient,
 
           request: {
             type: "GET",

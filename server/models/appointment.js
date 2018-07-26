@@ -31,7 +31,7 @@ const AppoitmentSchema = new mongoose.Schema({
     type :Boolean,
     index : true,
   },
-  createdBy:  { type: mongoose.Schema.Types.ObjectId, ref: 'Patient', required: true,
+  patient:  { type: mongoose.Schema.Types.ObjectId, ref: 'Patient', required: true,
 
 }
 });

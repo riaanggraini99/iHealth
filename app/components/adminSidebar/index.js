@@ -20,27 +20,27 @@ export default class SideBar extends Component {
                     <ul className="sidebar-menu" data-widget="tree">
                         <li className="header">MAIN NAVIGATION</li>
                         <li className="treeview">
-                            <a href="#">
+                            <a href="/medications">
                                 <i className="fa fa-files-o"></i>
                                 <span>Medicine data</span>
                             </a>
                         </li>
                         <li>
-                        <a href="/">
+                        <a href="/appointments">
                             <i className="fa fa-th"></i> <span>Appointment</span>
                         </a>
                         </li>
                         <li className="treeview">
-                        <a href="/"><span>Medic Record</span>
+                        <a href="/medic-record"><span>Medic Record</span>
                     
                         </a>
                       
-                        <a href="/">
+                        <a href="/patientList">
                             <i className="fa fa-calendar"></i> <span>Patient List</span>
                             </a>
                         </li>
                         <li>
-                        <a href="/">
+                        <a href="/user management">
                             <i className="fa fa-envelope"></i> <span>user management</span>
                             
                         </a>

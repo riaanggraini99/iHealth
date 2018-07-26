@@ -1,5 +1,12 @@
 import axios from 'axios';
 
+
+
+import { Router, Route, browserHistory, IndexRoute} from 'react-router';
+
+import {syncHistoryWithStore, routerReducer} from 'react-router-redux';
+
+
 const service = axios.create({
   baseURL: process.env.NODE_ENV === 'production' ? '/api' : 'http://localhost:3000/medication',
 });
@@ -26,4 +33,19 @@ export default {
           .then(res => res.data)
           .catch(errHandler);
       },
+      
+      detailMedication(){
+        return service
+          .get('/',+  +this.props.match.params.id)
+          console.log(medicationId)
+          .then(res => res.data)
+          .catch(errHandler);
+      },
+    deleteMedication(){
+      return service
+    .delete('/', { params: medicationId })
+    .then(res=> res.data)
+    .catch(errHandler) 
+      
+}
 };

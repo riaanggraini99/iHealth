@@ -9,11 +9,12 @@ class addAppointment extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      patientId:"",
+      _id:"",
       date: "",
       place: "",
       reason: "",
       note: "",
+      patient :"",
       message: null
     }
   }
@@ -29,21 +30,23 @@ class addAppointment extends Component {
     e.preventDefault()
     console.log(this.state.name, this.state.description)
     let data = {
-      patientId: this.state.patientId,
+      _id: this.state._id,
       date: this.state.date,
       place: this.state.place,
       reason:this.state.reason,
-      note: this.state.note
+      note: this.state.note,
+      patient: this.patient,
     }
     api.addAppointment(data)
       .then(result => {
         console.log('SUCCESS!')
         this.setState({
-          patientId:"",
+          _id:"",
           date: "",
           place: "",
           reason: "",
           note: "",
+          patient:"",
           message: `Your Appointment at '${this.state.date}' has been created`
         })
         setTimeout(() => {
@@ -61,11 +64,12 @@ class addAppointment extends Component {
       <div className=" addAppointment ">
         <h2>Add Appointment</h2>
         <form>
+
           date: <input type="date" value={this.state.date} onChange={(e) => {this.handleInputChange("date", e)}} /> <br/>
           place <input type="text" value={this.state.place} onChange={(e) => {this.handleInputChange("place", e)}}  /> <br/>
           reason <input type="number" value={this.state.reason} onChange={(e) => {this.handleInputChange("reason", e)}}  /> <br/>
           another note <textarea value={this.state.note} cols="30" rows="10" onChange={(e) => {this.handleInputChange("note", e)}} ></textarea> <br/>
-          <button onClick={(e) => this.handleClick(e)}>Create country</button>
+          <button onClick={(e) => this.handleClick(e)}>Appointment</button>
         </form>
         <div style={{
           margin: 10,

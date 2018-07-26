@@ -15,7 +15,7 @@ import React from 'react';
 import { Switch, Route } from 'react-router-dom';
 import { Helmet } from 'react-helmet';
 import styled from 'styled-components'
-
+import api from '../../api/patient';
 import Header from 'components/Header/index';
 
 import Footer from 'components/Footer/index';

@@ -46,4 +46,29 @@ export default {
       .then(res => res.data)
       .catch(errHandler);
   },
+  logout() {
+    delete axios.defaults.headers.common['Authorization'];
+    localStorage.removeItem('patient');
+  },
+  loadPatient() {
+    const patientData = localStorage.getItem('patient');
+    if (!patientData) return false;
+    const patient = JSON.parse(patientData);
+    if (patient.token) {
+      axios.defaults.headers.common['Authorization'] = 'Bearer ' + patient.token;
+      return patient;
+    }
+    return false;
+  },
+  
+  isLoggedIn() {
+    return localStorage.getItem('patient') != null
+  },
+  
+  getSecret() {
+    return service
+      .get('/secret')
+      .then(res => res.data)
+      .catch(errHandler);
+  },
 };

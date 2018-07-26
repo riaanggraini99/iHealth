@@ -50,6 +50,13 @@ const listPatients = (req, res, next) =>{
         return {
           name: doc.name,
           email: doc.email,
+          ID: doc.ID,
+          address: doc.address,
+          KK_number: doc. KK_number,
+          Blood_type: doc. Blood_type,
+          occupation: doc.occupation,
+          disease :doc.disease,
+          photo :doc.photo,
           _id: doc._id,
           request: {
             type: "GET",
@@ -189,6 +196,8 @@ const patientRecord = (req,res,next) =>{
     res.json(detail);
   });
 }
+
+
 module.exports = {
   listPatients,
   createPatient,
@@ -196,5 +205,6 @@ module.exports = {
   removePatient,
   editPatient,
   uploadPicture,
-  patientRecord
+  patientRecord,
+
 };

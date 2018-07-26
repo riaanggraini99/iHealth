@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
 import api from '../../api/medication';
-import styled from 'styled-components'
+import PropTypes from 'prop-types';
 import Header from 'components/adminHeader/index';
-
 import Sidebar from 'components/adminSidebar/index';
+import Feature from 'components/Feature/index';
+
+import styled from 'styled-components'
 
 const AppWrapper = styled.div`
   max-width: 100%;
@@ -13,36 +15,69 @@ const AppWrapper = styled.div`
   padding: 0;
   flex-direction: column;
 `;
-class Medications extends Component {
+
+class Medication extends Component {
   constructor(props) {
     super(props)
     this.state = {
       medications: []
     }
   }
-  
   componentDidMount() {
     api.getMedication()
-    .then( medications => {
-      console.log( medications)
-      this.setState({medications: medications.medication})
-      
-    })
-    .catch(err => console.log(err))
+      .then( medications => {
+        console.log(medications)
+        this.setState({medications : medications.medication})
+      })
+      .catch(err => console.log(err))
   }
-  
-  render() {                
-    return (
-      <div className=" Medications">
-      <Header />
+
+  render (){
+
+      return (
+        <div className="table">
+          <Header/>
+        <Sidebar />
         <AppWrapper>
-      <h2>List of Medicine</h2>
-        {this.state.medications.map((c, i) => <li key={i}>{c.name}</li>)}         
-      </AppWrapper >
-        <Sidebar/>
-      </div>
+    <table className="table table-striped table-padding">
+          <thead>
+              <tr className="heading">
+                  <th className="col-md-1">Name</th>
+                  <th className="col-md-1">Usage</th>
+                  <th className="col-md-1">Dosage</th>
+                  <th className="col-md-1">Warning</th>
+                  <th className="col-md-1">Note</th>
+                  <th className="col-md-1">Price</th>
+                  <th className="col-md-1">Action</th>
+                 
+               </tr>
+           </thead>
+           <tbody>
+           {
+            this.state.medications.map((list, index) => {
+               return (
+                 <tr key={index}>
+                    <td>{list.name}</td>
+                    <td>{list.usage}</td>
+                    <td>{list.dosage}</td>
+                    <td>{list.warning}</td>
+                    <td>{list.note}</td>
+                    <td>{list.price}</td>
+                    <td><button type="button" onClick={(e) => this.handleEdit(list.medicationId)}><i className="fa fa-pencil" aria-hidden="true">edit</i></button>
+                    <button type="button" onClick={(e) => this.deleteMedication(list.medicationId)}><i className="fa fa-trash" aria-hidden="true"></i>delete</button></td>
+                   </tr>
+                )
+
+             })
+            }
+            </tbody>
+     </table>
+     </AppWrapper>
+</div>
+
+ 
     );
   }
 }
 
-export default Medications;
+export default Medication;
