@@ -32,6 +32,10 @@ class Medication extends Component {
       .catch(err => console.log(err))
   }
 
+  handleDelete(){
+   api.deleteMedication(`/${this.state.id}`);
+  
+  }
   render (){
 
       return (
@@ -67,7 +71,7 @@ class Medication extends Component {
                     <td>{list.note}</td>
                     <td>{list.price}</td>
                     <td><button type="button" onClick={(e) => this.handleEdit(list.medicationId)}><i className="fa fa-pencil" aria-hidden="true">edit</i></button>
-                    <button type="button" onClick={(e) => this.deleteMedication(list.medicationId)}><i className="fa fa-trash" aria-hidden="true"></i>delete</button></td>
+                    <button type="button" onClick={(e) => this.handleDelete(this._id)}><i className="fa fa-trash" aria-hidden="true"></i>delete</button></td>
                    </tr>
                 )
 

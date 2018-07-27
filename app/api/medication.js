@@ -2,9 +2,9 @@ import axios from 'axios';
 
 
 
-import { Router, Route, browserHistory, IndexRoute} from 'react-router';
+import { Router, Route, browserHistory, IndexRoute } from 'react-router';
 
-import {syncHistoryWithStore, routerReducer} from 'react-router-redux';
+import { syncHistoryWithStore, routerReducer } from 'react-router-redux';
 
 
 const service = axios.create({
@@ -17,35 +17,42 @@ const errHandler = err => {
 };
 
 export default {
-    service: service,
-    
-    getMedication() {
-        return service
- 
-        .get('/')
-        .then(res => res.data)
-        .catch(errHandler);
-      },
+  service: service,
 
-      addMedication(data) {
-        return service
-          .post('/', data)
-          .then(res => res.data)
-          .catch(errHandler);
-      },
-      
-      detailMedication(){
-        return service
-          .get('/',+  +this.props.match.params.id)
-          console.log(medicationId)
-          .then(res => res.data)
-          .catch(errHandler);
-      },
-    deleteMedication(){
-      return service
-    .delete('/', { params: medicationId })
-    .then(res=> res.data)
-    .catch(errHandler) 
-      
-}
+  getMedication() {
+    return service
+
+      .get('/')
+      .then(res => res.data)
+      .catch(errHandler);
+  },
+
+  addMedication(data) {
+    return service
+      .post('/', data)
+      .then(res => res.data)
+      .catch(errHandler);
+  },
+
+  detailMedication() {
+    return service
+      .get('/', +  +this.props.match.params.id)
+    console.log(medicationId)
+      .then(res => res.data)
+      .catch(errHandler);
+  },
+  deleteMedication() {
+    return service
+      .delete('/${this.state.id}')
+      .then(res => res.data)
+      .catch(errHandler)
+
+  },
+  editMedication(){
+    return service
+    .put('/${$this.state.id}')
+    .then(res => res.data)
+    .catch(errHandler)
+      }
+
 };

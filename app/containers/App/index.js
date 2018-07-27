@@ -53,12 +53,12 @@ export default function App() {
       <Switch>
         <Route exact path="/" component={LoginPage} />
         <Route exact path="/homepage" component={HomePage} />
-        <Route exact path="/doctorPanel" component={Doctor} />
+       
         <Route  path="/patientList" component={PatientList} />
         <Route  path="/patients/login" component={LoginPage} />
         <Route path= '/patients/add' component={RegisterPatient}/>
         <Route path = '/patients/add-appointment' component={AddAppointment}/>
-        <Route path = '/doctor' component={AdminHomePage}/>
+        <Route path = '/doctorpanel' component={AdminHomePage}/>
         <Route path = '/medications' component={Med}/>
         <Route path = '/add-medication' component={AddMedication}/>
         <Route path = '/appointments' component={Appointment}/>
